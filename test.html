@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carbon Footprint Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Carbon Footprint Calculator</h2>
+  
+  <form id="carbonForm">
+    <label for="electricity">Electricity Usage (kWh):</label>
+    <input type="number" id="electricity" required>
+
+    <label for="gas">Gas Usage (therms):</label>
+    <input type="number" id="gas" required>
+
+    <label for="carMileage">Car Mileage (miles per year):</label>
+    <input type="number" id="carMileage" required>
+
+    <label for="publicTransport">Public Transport Usage (miles per year):</label>
+    <input type="number" id="publicTransport" required>
+
+    <label for="waste">Waste Generated (pounds per week):</label>
+    <input type="number" id="waste" required>
+
+    <button type="button" onclick="calculateFootprint()">Calculate</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    function calculateFootprint() {
+      var electricity = parseFloat(document.getElementById('electricity').value);
+      var gas = parseFloat(document.getElementById('gas').value);
+      var carMileage = parseFloat(document.getElementById('carMileage').value);
+      var publicTransport = parseFloat(document.getElementById('publicTransport').value);
+      var waste = parseFloat(document.getElementById('waste').value);
+
+      var totalFootprint = (electricity * 0.4) + (gas * 5.5) + (carMileage * 0.45) + (publicTransport * 0.3) + (waste * 0.2);
+
+      document.getElementById('result').innerHTML = "<h3>Your estimated carbon footprint is: " + totalFootprint.toFixed(2) + " metric tons CO2e per year</h3>";
+    }
+  </script>
+
+</body>
+</html>
